@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>eu.ralph-schuster</groupId>
+		<artifactId>rs.rcpplugins.tycho-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>eu.ralph-schuster</groupId>
+	<artifactId>rs.rcpplugins.common</artifactId>
+	<version>1.2.2-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
+	<name>rs.rcpplugins.common</name>
+	
+	<scm>
+		<connection>scm:svn:https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.common/trunk</connection>
+		<developerConnection>scm:svn:https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.common/trunk</developerConnection>
+		<url>https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.common/trunk</url>
+	</scm>
+
+	<modules>
+		<module>baselib</module>
+		<module>data</module>
+		<module>data-hibernate</module>
+		<module>e4</module>
+		<module>feature</module>
+	</modules>
+</project>
