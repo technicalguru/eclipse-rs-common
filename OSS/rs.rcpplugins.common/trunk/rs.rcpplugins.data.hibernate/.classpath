@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/JDBC/hsqldb.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/JDBC/mysql-connector-java-5.1.20.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/eu.ralph-schuster.data-hibernate/data-hibernate-1.2.2.jar" sourcepath="lib/eu.ralph-schuster.data-hibernate/data-hibernate-1.2.2-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/rs.rcpplugins.data.hibernate/lib/eu.ralph-schuster.data-hibernate/data-hibernate-1.2.2-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/antlr-2.7.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/javassist-3.12.0.GA.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/ow2-connector-1.5-spec.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/cglib-2.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/dom4j-1.6.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/jboss-logging-3.1.0.GA.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/hibernate-commons-annotations-4.0.2.Final.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/hibernate-core-4.2.3.Final.jar" sourcepath="lib/org.hibernate/hibernate-core-4.2.3.Final-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/hibernate-entitymanager-4.2.3.Final.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry exported="true" kind="lib" path="lib/JDBC/db2jcc_license_cu.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/JDBC/db2jcc.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/JDBC/ingres3-edbc.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/JDBC/ojdbc6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/JDBC/orai18n.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="src" path="src/"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/hibernate-commons-annotations-4.0.2.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/hibernate-core-4.2.3.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/hibernate-entitymanager-4.2.3.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/cglib-2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/ow2-connector-1.5-spec.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/javassist-3.12.0.GA.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/antlr-2.7.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/eu.ralph-schuster.data-hibernate/data-hibernate-1.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JDBC/mysql-connector-java-5.1.20.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JDBC/hsqldb.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
