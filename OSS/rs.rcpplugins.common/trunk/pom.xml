@@ -26,5 +26,6 @@
 		<module>data-hibernate</module>
 		<module>e4</module>
 		<module>feature</module>
+		<module>p2</module>
 	</modules>
 </project>
