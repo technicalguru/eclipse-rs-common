@@ -13,6 +13,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/jotm-core-2.2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/logkit-1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/ow2-jta-1.1-spec-1.0-M1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/eu.ralph-schuster.data/data-1.2.2.jar" sourcepath="lib/eu.ralph-schuster.data/data-1.2.2-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/eu.ralph-schuster.data/data-1.2.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

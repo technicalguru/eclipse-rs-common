@@ -18,7 +18,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/ow2-connector-1.5-spec.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/javassist-3.12.0.GA.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.hibernate/antlr-2.7.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/eu.ralph-schuster.data-hibernate/data-hibernate-1.2.2.jar" sourcepath="lib/eu.ralph-schuster.data-hibernate/data-hibernate-1.2.2-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/eu.ralph-schuster.data-hibernate/data-hibernate-1.2.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/JDBC/mysql-connector-java-5.1.20.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/JDBC/hsqldb.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
