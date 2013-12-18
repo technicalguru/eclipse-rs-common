@@ -5,12 +5,11 @@
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/avalon-framework-4.1.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/carol-3.0.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/carol-interceptors-1.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/commons-logging-api-1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/howl-1.0.1-1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/irmi-1.1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/jacorb-2.2.3-jonas-patch-20071018.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/jacorb-idl-2.2.3-jonas-patch-20071018.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/jotm-core-2.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/jotm-core-2.2.1.jar" sourcepath="C:/m2/repository/org/ow2/jotm/jotm-core/2.2.1/jotm-core-2.2.1-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/logkit-1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-2.1.9/ow2-jta-1.1-spec-1.0-M1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/eu.ralph-schuster.data/data-1.2.2.jar"/>
