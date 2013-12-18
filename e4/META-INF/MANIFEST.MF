@@ -54,4 +54,4 @@ Export-Package: rs.e4,
  rs.e4.swt.events,
  rs.e4.util
 Import-Package: javax.annotation;version="1.1.0"
-Service-Component: OSGI-INF/logreaderservice.xml
+
