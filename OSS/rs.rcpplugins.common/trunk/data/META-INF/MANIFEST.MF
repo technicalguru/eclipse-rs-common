@@ -6,7 +6,8 @@ Bundle-Version: 1.2.2.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-BuddyPolicy: registered
 Eclipse-RegisterBuddy: rs.rcpplugins.common
-Require-Bundle: rs.rcpplugins.common.baselib,
+Require-Bundle: rs.rcpplugins.common.jcl-over-slf4j;bundle-version="1.2.2",
+ rs.rcpplugins.common.baselib,
  org.eclipse.core.databinding;bundle-version="1.4.1",
  org.eclipse.jface.databinding;bundle-version="1.6.0",
  org.eclipse.core.databinding.beans;bundle-version="1.2.200",
