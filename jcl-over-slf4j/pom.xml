@@ -9,6 +9,6 @@
 
 	<artifactId>rs.rcpplugins.common.jcl-over-slf4j</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>rs.rcpplugins.common.logging</name>
+	<name>rs.rcpplugins.common.jcl-over-slf4j</name>
 	<description>Apache Commons Logging over SLF4J</description>
 </project>

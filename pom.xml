@@ -21,11 +21,11 @@
 	</scm>
 
 	<modules>
+		<module>jcl-over-slf4j</module>
 		<module>baselib</module>
 		<module>data</module>
 		<module>data-hibernate</module>
 		<module>e4</module>
-		<module>jcl-over-slf4j</module>
 		<module>osgilogging-over-slf4j</module>
 		<module>feature</module>
 		<module>p2</module>
