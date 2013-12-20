@@ -28,6 +28,5 @@
 		<module>e4</module>
 		<module>osgilogging-over-slf4j</module>
 		<module>feature</module>
-		<module>p2</module>
 	</modules>
 </project>
