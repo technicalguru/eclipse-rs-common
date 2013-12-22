@@ -4,16 +4,14 @@
 	<parent>
 		<groupId>eu.ralph-schuster</groupId>
 		<artifactId>rs.rcpplugins.tycho-parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	
-	<groupId>eu.ralph-schuster</groupId>
 	<artifactId>rs.rcpplugins.common</artifactId>
-	<version>1.2.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
-	<name>rs.rcpplugins.common</name>
-	
+	<name>${project.artifactId}</name>
+	<description>RCP Common Feature</description>
+		
 	<scm>
 		<connection>scm:svn:https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.common/trunk</connection>
 		<developerConnection>scm:svn:https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.common/trunk</developerConnection>

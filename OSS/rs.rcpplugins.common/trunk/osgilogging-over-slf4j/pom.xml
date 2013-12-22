@@ -8,8 +8,7 @@
 	</parent>
 
 	<artifactId>rs.rcpplugins.common.osgilogging-over-slf4j</artifactId>
-	<version>1.2.2-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
-	<name>rs.rcpplugins.common.osgilogging-over-slf4j</name>
+	<name>${project.artifactId}</name>
 	<description>OSGI Logging via SLF4J</description>
 </project>
