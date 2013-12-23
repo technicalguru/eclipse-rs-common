@@ -10,6 +10,7 @@
 	<artifactId>rs.rcpplugins.common</artifactId>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
+	<version>1.2.2-SNAPSHOT</version>
 	<description>RCP Common Feature</description>
 		
 	<scm>
