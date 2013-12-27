@@ -8,6 +8,10 @@ import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.IJobManager;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
+import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.ui.MUIElement;
+import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
+import org.eclipse.e4.ui.model.application.ui.basic.MTrimmedWindow;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.swt.widgets.Shell;
 
@@ -106,6 +110,45 @@ public class JobUtils {
 	 */
 	public static IProgressMonitor createProgressMonitor(Shell shell) {
 		return new ProgressDialogController(shell);
+	}
+	
+	/**
+	 * Finds the first progress monitor in the trim bars of the window.
+	 * @param window the window model
+	 * @return the progress monitor or null if none found
+	 */
+	public static IProgressMonitor findProgressToolItem(MTrimmedWindow window) {
+		for (MTrimBar bar : window.getTrimBars()) {
+			IProgressMonitor rc = findProgressToolItem(bar);
+			if (rc != null) return rc;
+		}
+		return null;
+	}
+	
+	/**
+	 * Finds the first progress monitor in the container.
+	 * @param container the container model
+	 * @return the progress monitor or null if none found
+	 */
+	public static IProgressMonitor findProgressToolItem(MElementContainer<?> container) {
+		for (MUIElement element : container.getChildren()) {
+			IProgressMonitor rc = getProgressToolItem(element);
+			if (rc != null) return rc;
+		}
+		return null;
+	}
+	
+	/**
+	 * Returns the progress monitor associated with this element.
+	 * @param element the element
+	 * @return the progress monitor or null if none attached 
+	 */
+	public static IProgressMonitor getProgressToolItem(MUIElement element) {
+		Object widget = element.getWidget();
+		if (widget instanceof IProgressMonitor) {
+			return (IProgressMonitor)widget;
+		}
+		return null;
 	}
 	
 }
