@@ -575,6 +575,7 @@ public class HelpBrowser extends Composite {
 		//		log.info("stripBundle: install ="+Platform.getInstallLocation().getURL());
 		//		log.info("stripBundle: instance="+Platform.getInstanceLocation().getURL());
 		//		log.info("stripBundle: user    ="+Platform.getUserLocation().getURL());
+		if (bundle == null) return link;
 		String bundleLocation = bundle.getLocation();
 		//log.info("stripBundle:     bundleLocation="+bundleLocation);
 		if (bundleLocation.startsWith("reference:file:")) bundleLocation = bundleLocation.substring(15);
