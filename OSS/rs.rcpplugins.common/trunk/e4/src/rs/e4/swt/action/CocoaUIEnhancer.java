@@ -27,6 +27,7 @@ import rs.baselib.lang.LangUtils;
  * >CarbonUIEnhancer from Agynami</a> with the implementation being modified from the <a href="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.ui.cocoa/src/org/eclipse/ui/internal/cocoa/CocoaUIEnhancer.java"
  * >org.eclipse.ui.internal.cocoa.CocoaUIEnhancer</a>.
  * </p>
+ * @see http://www.transparentech.com/opensource/cocoauienhancer
  */
 public class CocoaUIEnhancer {
 
