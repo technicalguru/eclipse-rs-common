@@ -77,8 +77,14 @@ public class CocoaUIEnhancer {
 		// Connect the given IAction objects to the actionProce method.
 		//
 		Object target = new Object() {
+			/** 32bit version of callback */
 			@SuppressWarnings( "unused" )
 			int actionProc( int id, int sel, int arg0 ) {
+				return (int) actionProc((long) id, (long) sel, (long) arg0);
+			}
+			
+			/** 64bit version of callback */
+			long actionProc(long id, long sel, long arg0) {
 				if ( sel == sel_aboutMenuItemSelected_ ) {
 					if (aboutAction != null) aboutAction.run();
 				} else if ( sel == sel_preferencesMenuItemSelected_ ) {
