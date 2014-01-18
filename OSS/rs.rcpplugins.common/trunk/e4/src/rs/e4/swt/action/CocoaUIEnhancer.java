@@ -44,7 +44,10 @@ public class CocoaUIEnhancer {
 	static Callback proc3Args;
 
 	final private String appName;
-
+	private IAction quitAction;
+	private IAction aboutAction;
+	private IAction preferencesAction;
+	
 	/**
 	 * Construct a new CocoaUIEnhancer.
 	 * 
@@ -76,6 +79,10 @@ public class CocoaUIEnhancer {
 		//
 		// Connect the given IAction objects to the actionProce method.
 		//
+		this.quitAction = (IAction)quitListener;
+		this.aboutAction = aboutAction;
+		this.preferencesAction = preferencesAction;
+		
 		Object target = new Object() {
 			/** 32bit version of callback */
 			@SuppressWarnings( "unused" )
@@ -170,34 +177,35 @@ public class CocoaUIEnhancer {
 						Object appMenu = invoke( mainMenuItem, "submenu" );
 
 						// Create the About <application-name> menu command
-						Object aboutMenuItem =
-								invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kAboutMenuItem ) } );
-						if ( appName != null ) {
-							Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { "About " + appName } );
+						if ((appName != null) && (aboutAction != null)) {
+							Object aboutMenuItem =
+									invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kAboutMenuItem ) } );
+							Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { aboutAction.getText() } );
 							invoke( nsmenuitemCls, aboutMenuItem, "setTitle", new Object[] { nsStr } );
+							invoke( nsmenuitemCls, aboutMenuItem, "setAction",
+									new Object[] { wrapPointer( sel_aboutMenuItemSelected_ ) } );
 						}
 						// Rename the quit action.
-						if ( appName != null ) {
+						if ((appName != null) && (quitAction != null)) {
 							Object quitMenuItem =
 									invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kQuitMenuItem ) } );
-							Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { "Quit " + appName } );
+							Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { quitAction.getText() } );
 							invoke( nsmenuitemCls, quitMenuItem, "setTitle", new Object[] { nsStr } );
 						}
 
 						// Enable the Preferences menuItem.
-						Object prefMenuItem =
+						if (preferencesAction != null) {
+							Object prefMenuItem =
 								invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kPreferencesMenuItem ) } );
-						invoke( nsmenuitemCls, prefMenuItem, "setEnabled", new Object[] { true } );
-
-						// Set the action to execute when the About or Preferences menuItem is invoked.
-						//
-						// We don't need to set the target here as the current target is the SWTApplicationDelegate
-						// and we have registerd the new selectors on it. So just set the new action to invoke the
-						// selector.
-						invoke( nsmenuitemCls, prefMenuItem, "setAction",
-								new Object[] { wrapPointer( sel_preferencesMenuItemSelected_ ) } );
-						invoke( nsmenuitemCls, aboutMenuItem, "setAction",
-								new Object[] { wrapPointer( sel_aboutMenuItemSelected_ ) } );
+							invoke( nsmenuitemCls, prefMenuItem, "setEnabled", new Object[] { true } );
+							// Display
+							Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { preferencesAction.getText() } );
+							invoke( nsmenuitemCls, prefMenuItem, "setTitle", new Object[] { nsStr } );
+							// Action to be invoked
+							invoke( nsmenuitemCls, prefMenuItem, "setAction",
+									new Object[] { wrapPointer( sel_preferencesMenuItemSelected_ ) } );
+						}
+						
 	}
 
 	private long registerName( Class<?> osCls, String name ) throws IllegalArgumentException, SecurityException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {

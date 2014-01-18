@@ -26,8 +26,9 @@ public class CocoaE4Handler extends Action implements Listener, IAction {
 	/**
 	 * Constructor.
 	 */
-	public CocoaE4Handler(Class<?> handlerClass, IEclipseContext context) {
+	public CocoaE4Handler(Class<?> handlerClass, String label, IEclipseContext context) {
 		this.handlerClass = handlerClass;
+		setText(label);
 	}
 
 	/**
