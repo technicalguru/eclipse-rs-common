@@ -53,6 +53,8 @@ public class CocoaE4Handler extends Action implements Listener, IAction {
 			}
 		} catch (Throwable t) {
 			LoggerFactory.getLogger(getClass()).error("Cannot invoke handler \""+handlerClass.getName()+"\"", t);
+			System.out.println("Cannot invoke handler \""+handlerClass.getName()+"\"");
+			t.printStackTrace();
 		}
 	}
 
