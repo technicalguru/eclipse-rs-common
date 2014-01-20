@@ -95,16 +95,15 @@ public class CocoaUIEnhancer {
 			/** 64bit version of callback */
 			long actionProc(long id, long sel, long arg0) {
 				if ( sel == sel_aboutMenuItemSelected_ ) {
-					LoggerFactory.getLogger(CocoaUIEnhancer.class).info("About menu item called. Invoking action...");
+					System.out.println("About menu item called. Invoking action...");
 					if (CocoaUIEnhancer.this.aboutAction != null) CocoaUIEnhancer.this.aboutAction.run();
 				} else if ( sel == sel_preferencesMenuItemSelected_ ) {
-					LoggerFactory.getLogger(CocoaUIEnhancer.class).info("Prefs menu item called. Invoking action...");
+					System.out.println("Prefs menu item called. Invoking action...");
 					if (CocoaUIEnhancer.this.preferencesAction != null) CocoaUIEnhancer.this.preferencesAction.run();
 				} else {
-					Logger log = LoggerFactory.getLogger(CocoaUIEnhancer.class);
-					log.error("Unknown selection: "+sel);
-					log.error("Known Selection for about: "+sel_aboutMenuItemSelected_);
-					log.error("Known Selection for prefs: "+sel_preferencesMenuItemSelected_);
+					System.out.println("Unknown selection: "+sel);
+					System.out.println("Known Selection for about: "+sel_aboutMenuItemSelected_);
+					System.out.println("Known Selection for prefs: "+sel_preferencesMenuItemSelected_);
 					// Unknown selection!
 				}
 				// Return value is not used.
