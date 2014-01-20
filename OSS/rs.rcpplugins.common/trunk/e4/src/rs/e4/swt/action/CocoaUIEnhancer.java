@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.internal.C;
 import org.eclipse.swt.internal.Callback;
@@ -94,6 +95,7 @@ public class CocoaUIEnhancer {
 
 			/** 64bit version of callback */
 			long actionProc(long id, long sel, long arg0) {
+				MessageDialog.openInformation(null, "Callback", "Callback received the call with: "+sel);
 				if ( sel == sel_aboutMenuItemSelected_ ) {
 					System.out.println("About menu item called. Invoking action...");
 					if (CocoaUIEnhancer.this.aboutAction != null) CocoaUIEnhancer.this.aboutAction.run();
