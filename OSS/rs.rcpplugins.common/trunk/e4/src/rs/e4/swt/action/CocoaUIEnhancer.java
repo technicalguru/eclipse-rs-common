@@ -9,6 +9,8 @@ import org.eclipse.swt.internal.C;
 import org.eclipse.swt.internal.Callback;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Listener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import rs.baselib.lang.LangUtils;
 
@@ -47,7 +49,7 @@ public class CocoaUIEnhancer {
 	private IAction quitAction;
 	private IAction aboutAction;
 	private IAction preferencesAction;
-	
+
 	/**
 	 * Construct a new CocoaUIEnhancer.
 	 * 
@@ -82,21 +84,27 @@ public class CocoaUIEnhancer {
 		this.quitAction = (IAction)quitListener;
 		this.aboutAction = aboutAction;
 		this.preferencesAction = preferencesAction;
-		
+
 		Object target = new Object() {
 			/** 32bit version of callback */
 			@SuppressWarnings( "unused" )
 			int actionProc( int id, int sel, int arg0 ) {
 				return (int) actionProc((long) id, (long) sel, (long) arg0);
 			}
-			
+
 			/** 64bit version of callback */
 			long actionProc(long id, long sel, long arg0) {
 				if ( sel == sel_aboutMenuItemSelected_ ) {
-					if (aboutAction != null) aboutAction.run();
+					LoggerFactory.getLogger(CocoaUIEnhancer.class).info("About menu item called. Invoking action...");
+					if (CocoaUIEnhancer.this.aboutAction != null) CocoaUIEnhancer.this.aboutAction.run();
 				} else if ( sel == sel_preferencesMenuItemSelected_ ) {
-					if (preferencesAction != null) preferencesAction.run();
+					LoggerFactory.getLogger(CocoaUIEnhancer.class).info("Prefs menu item called. Invoking action...");
+					if (CocoaUIEnhancer.this.preferencesAction != null) CocoaUIEnhancer.this.preferencesAction.run();
 				} else {
+					Logger log = LoggerFactory.getLogger(CocoaUIEnhancer.class);
+					log.error("Unknown selection: "+sel);
+					log.error("Known Selection for about: "+sel_aboutMenuItemSelected_);
+					log.error("Known Selection for prefs: "+sel_preferencesMenuItemSelected_);
 					// Unknown selection!
 				}
 				// Return value is not used.
@@ -159,53 +167,41 @@ public class CocoaUIEnhancer {
 		long cls = convertToLong( object );
 
 		// Add the action callbacks for Preferences and About menu items.
-		invoke( osCls, "class_addMethod", new Object[] {
-				wrapPointer( cls ),
-				wrapPointer( sel_preferencesMenuItemSelected_ ),
-				wrapPointer( proc3 ),
-				"@:@" } ); //$NON-NLS-1$
-				invoke( osCls, "class_addMethod", new Object[] {
-						wrapPointer( cls ),
-						wrapPointer( sel_aboutMenuItemSelected_ ),
-						wrapPointer( proc3 ),
-						"@:@" } ); //$NON-NLS-1$
+		invoke( osCls, "class_addMethod", new Object[] { wrapPointer( cls ), wrapPointer( sel_preferencesMenuItemSelected_ ), wrapPointer( proc3 ), "@:@" } ); //$NON-NLS-1$
+		invoke( osCls, "class_addMethod", new Object[] { wrapPointer( cls ), wrapPointer( sel_aboutMenuItemSelected_ ), wrapPointer( proc3 ), "@:@" } ); //$NON-NLS-1$
 
-						// Get the Mac OS X Application menu.
-						Object sharedApplication = invoke( nsapplicationCls, "sharedApplication" );
-						Object mainMenu = invoke( sharedApplication, "mainMenu" );
-						Object mainMenuItem = invoke( nsmenuCls, mainMenu, "itemAtIndex", new Object[] { wrapPointer( 0 ) } );
-						Object appMenu = invoke( mainMenuItem, "submenu" );
+		// Get the Mac OS X Application menu.
+		Object sharedApplication = invoke( nsapplicationCls, "sharedApplication" );
+		Object mainMenu = invoke( sharedApplication, "mainMenu" );
+		Object mainMenuItem = invoke( nsmenuCls, mainMenu, "itemAtIndex", new Object[] { wrapPointer( 0 ) } );
+		Object appMenu = invoke( mainMenuItem, "submenu" );
 
-						// Create the About <application-name> menu command
-						if ((appName != null) && (aboutAction != null)) {
-							Object aboutMenuItem =
-									invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kAboutMenuItem ) } );
-							Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { aboutAction.getText() } );
-							invoke( nsmenuitemCls, aboutMenuItem, "setTitle", new Object[] { nsStr } );
-							invoke( nsmenuitemCls, aboutMenuItem, "setAction",
-									new Object[] { wrapPointer( sel_aboutMenuItemSelected_ ) } );
-						}
-						// Rename the quit action.
-						if ((appName != null) && (quitAction != null)) {
-							Object quitMenuItem =
-									invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kQuitMenuItem ) } );
-							Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { quitAction.getText() } );
-							invoke( nsmenuitemCls, quitMenuItem, "setTitle", new Object[] { nsStr } );
-						}
+		// Create the About <application-name> menu command
+		if ((appName != null) && (aboutAction != null)) {
+			Object aboutMenuItem = invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kAboutMenuItem ) } );
+			invoke( nsmenuitemCls, aboutMenuItem, "setEnabled", new Object[] { true } );
+			Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { aboutAction.getText() } );
+			invoke( nsmenuitemCls, aboutMenuItem, "setTitle", new Object[] { nsStr } );
+			invoke( nsmenuitemCls, aboutMenuItem, "setAction", new Object[] { wrapPointer( sel_aboutMenuItemSelected_ ) } );
+		}
+		// Rename the quit action.
+		if ((appName != null) && (quitAction != null)) {
+			Object quitMenuItem = invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kQuitMenuItem ) } );
+			Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { quitAction.getText() } );
+			invoke( nsmenuitemCls, quitMenuItem, "setTitle", new Object[] { nsStr } );
+		}
 
-						// Enable the Preferences menuItem.
-						if (preferencesAction != null) {
-							Object prefMenuItem =
-								invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kPreferencesMenuItem ) } );
-							invoke( nsmenuitemCls, prefMenuItem, "setEnabled", new Object[] { true } );
-							// Display
-							Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { preferencesAction.getText() } );
-							invoke( nsmenuitemCls, prefMenuItem, "setTitle", new Object[] { nsStr } );
-							// Action to be invoked
-							invoke( nsmenuitemCls, prefMenuItem, "setAction",
-									new Object[] { wrapPointer( sel_preferencesMenuItemSelected_ ) } );
-						}
-						
+		// Enable the Preferences menuItem.
+		if (preferencesAction != null) {
+			Object prefMenuItem = invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kPreferencesMenuItem ) } );
+			invoke( nsmenuitemCls, prefMenuItem, "setEnabled", new Object[] { true } );
+			// Display
+			Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { preferencesAction.getText() } );
+			invoke( nsmenuitemCls, prefMenuItem, "setTitle", new Object[] { nsStr } );
+			// Action to be invoked
+			invoke( nsmenuitemCls, prefMenuItem, "setAction", new Object[] { wrapPointer( sel_preferencesMenuItemSelected_ ) } );
+		}
+
 	}
 
 	private long registerName( Class<?> osCls, String name ) throws IllegalArgumentException, SecurityException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
