@@ -10,8 +10,6 @@ import org.eclipse.swt.internal.C;
 import org.eclipse.swt.internal.Callback;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Listener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import rs.baselib.lang.LangUtils;
 
@@ -46,7 +44,6 @@ public class CocoaUIEnhancer {
 
 	static Callback proc3Args;
 
-	final private String appName;
 	private IAction quitAction;
 	private IAction aboutAction;
 	private IAction preferencesAction;
@@ -60,7 +57,6 @@ public class CocoaUIEnhancer {
 	 *            <tt>null</tt> here.
 	 */
 	public CocoaUIEnhancer( String appName ) {
-		this.appName = appName;
 	}
 
 	/**
@@ -138,7 +134,7 @@ public class CocoaUIEnhancer {
 		Class<?> osCls = LangUtils.forName( "org.eclipse.swt.internal.cocoa.OS" );
 
 		// Register names in objective-c.
-		if ( sel_toolbarButtonClicked_ == 0 ) {
+		if ( sel_preferencesMenuItemSelected_ == 0 ) {
 			// sel_toolbarButtonClicked_ = registerName( osCls, "toolbarButtonClicked:" ); //$NON-NLS-1$
 			sel_preferencesMenuItemSelected_ = registerName( osCls, "preferencesMenuItemSelected:" ); //$NON-NLS-1$
 			sel_aboutMenuItemSelected_ = registerName( osCls, "aboutMenuItemSelected:" ); //$NON-NLS-1$
@@ -178,7 +174,7 @@ public class CocoaUIEnhancer {
 		Object appMenu = invoke( mainMenuItem, "submenu" );
 
 		// Create the About <application-name> menu command
-		if ((appName != null) && (aboutAction != null)) {
+		if (aboutAction != null) {
 			Object aboutMenuItem = invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kAboutMenuItem ) } );
 			invoke( nsmenuitemCls, aboutMenuItem, "setEnabled", new Object[] { true } );
 			Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { aboutAction.getText() } );
@@ -186,7 +182,7 @@ public class CocoaUIEnhancer {
 			invoke( nsmenuitemCls, aboutMenuItem, "setAction", new Object[] { wrapPointer( sel_aboutMenuItemSelected_ ) } );
 		}
 		// Rename the quit action.
-		if ((appName != null) && (quitAction != null)) {
+		if (quitAction != null) {
 			Object quitMenuItem = invoke( nsmenuCls, appMenu, "itemAtIndex", new Object[] { wrapPointer( kQuitMenuItem ) } );
 			Object nsStr = invoke( nsstringCls, "stringWith", new Object[] { quitAction.getText() } );
 			invoke( nsmenuitemCls, quitMenuItem, "setTitle", new Object[] { nsStr } );
