@@ -25,8 +25,9 @@ import rs.baselib.lang.LangUtils;
  * <p>
  * This code was influenced by the <a
  * href="http://www.simidude.com/blog/2008/macify-a-swt-application-in-a-cross-platform-way/"
- * >CarbonUIEnhancer from Agynami</a> with the implementation being modified from the <a href="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.ui.cocoa/src/org/eclipse/ui/internal/cocoa/CocoaUIEnhancer.java"
- * >org.eclipse.ui.internal.cocoa.CocoaUIEnhancer</a>.
+ * >CarbonUIEnhancer from Agynami</a> with the implementation being modified from the 
+ * <a href="http://git.eclipse.org/c/platform/eclipse.platform.ui.git/tree/bundles/org.eclipse.e4.ui.workbench.renderers.swt.cocoa/src/org/eclipse/e4/ui/workbench/renderers/swt/cocoa/CocoaUIHandler.java"
+ * >org.eclipse.e4.ui.workbench.renderers.swt.cocoa.CocoaUIHandler</a>.
  * </p>
  * @see http://www.transparentech.com/opensource/cocoauienhancer
  */
