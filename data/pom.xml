@@ -11,4 +11,59 @@
 	<packaging>eclipse-plugin</packaging>
 	<name>${project.artifactId}</name>
 	<description>Library for generic Data Access classes</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>eu.ralph-schuster</groupId>
+			<artifactId>data</artifactId>
+			<version>${rslib.version}</version>
+		</dependency>
+	</dependencies>
+		
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+
+				<executions>
+					<execution>
+						<id>copy-sources</id>
+						<phase>generate-sources</phase>
+
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/lib/sources</outputDirectory>
+							<excludeTransitive>false</excludeTransitive>
+							<classifier>sources</classifier>
+							<addParentPoms>false</addParentPoms>
+							<excludeScope>system</excludeScope>
+							<includeScope>runtime</includeScope>
+							<stripVersion>true</stripVersion>
+							<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>generate-sources</phase>
+
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/lib</outputDirectory>
+							<excludeTransitive>false</excludeTransitive>
+							<addParentPoms>false</addParentPoms>
+							<excludeScope>system</excludeScope>
+							<includeScope>runtime</includeScope>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

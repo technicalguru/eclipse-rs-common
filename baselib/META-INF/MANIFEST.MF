@@ -5,14 +5,17 @@ Bundle-SymbolicName: rs.rcpplugins.common.baselib
 Bundle-Version: 1.2.2.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-BuddyPolicy: registered
-Bundle-ClassPath: lib/commons-beanutils-1.8.3/commons-beanutils-1.8.3.jar,
- lib/commons-codec/commons-codec-1.8.jar,
- lib/commons-collections-3.2.1/commons-collections-3.2.1.jar,
- lib/commons-configuration/commons-configuration-1.8.jar,
- lib/commons-lang/commons-lang-2.6.jar,
- .,
+Bundle-ClassPath: .,
+ lib/commons-beanutils.jar,
+ lib/commons-codec.jar,
+ lib/commons-configuration.jar,
+ lib/commons-lang.jar,
+ lib/commons-collections.jar,
+ lib/commons-logging.jar,
+ lib/persistence-api.jar,
+ lib/commons-cli.jar,
  resources/,
- lib/eu.ralph-schuster.baselib/baselib-1.2.2.jar
+ lib/baselib.jar
 Export-Package: org.apache.commons.beanutils,
  org.apache.commons.beanutils.converters,
  org.apache.commons.beanutils.expression,
@@ -60,6 +63,7 @@ Export-Package: org.apache.commons.beanutils,
  rs.baselib.crypto,
  rs.baselib.io,
  rs.baselib.lang,
+ rs.baselib.licensing,
  rs.baselib.prefs,
  rs.baselib.security,
  rs.baselib.sql,
