@@ -6,9 +6,79 @@
 		<artifactId>rs.rcpplugins.common</artifactId>
 		<version>1.2.2-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>rs.rcpplugins.common.data-hibernate</artifactId>
 	<packaging>eclipse-plugin</packaging>
 	<name>${project.artifactId}</name>
 	<description>Hibernate extension for Data Access classes</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>eu.ralph-schuster</groupId>
+			<artifactId>data-hibernate</artifactId>
+			<version>${rslib.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.20</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+
+				<executions>
+					<execution>
+						<id>copy-sources</id>
+						<phase>generate-sources</phase>
+
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/lib/sources</outputDirectory>
+							<excludeTransitive>false</excludeTransitive>
+							<classifier>sources</classifier>
+							<addParentPoms>false</addParentPoms>
+							<excludeScope>system</excludeScope>
+							<includeScope>runtime</includeScope>
+							<stripVersion>true</stripVersion>
+							<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>generate-sources</phase>
+
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/lib</outputDirectory>
+							<excludeTransitive>false</excludeTransitive>
+							<addParentPoms>false</addParentPoms>
+							<excludeScope>system</excludeScope>
+							<includeScope>runtime</includeScope>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
