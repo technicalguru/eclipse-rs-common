@@ -3,7 +3,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/hsqldb.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/mysql-connector-java.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/cglib.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/data-hibernate.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/data-hibernate.jar" sourcepath="C:/m2/repository/eu/ralph-schuster/data-hibernate/1.2.4/data-hibernate-1.2.4-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/antlr.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/javassist.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/ow2-connector-1.5-spec.jar"/>
