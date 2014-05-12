@@ -8,7 +8,7 @@
 	</parent>
 
 	<properties>
-		<rslib.version>1.2.2</rslib.version>
+		<rslib.version>1.2.5</rslib.version>
 	</properties>
 	
 	<artifactId>rs.rcpplugins.common</artifactId>

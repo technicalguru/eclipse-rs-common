@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/jacorb.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/data.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ow2-jta-1.1-spec.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/logkit.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jotm-core.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jacorb-idl.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/irmi.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/howl.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/carol-interceptors.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/carol.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/avalon-framework.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry exported="true" kind="lib" path="lib/avalon-framework.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/carol.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/carol-interceptors.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/howl.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/irmi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jacorb.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jacorb-idl.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jotm-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/logkit.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ow2-jta-1.1-spec.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/data.jar" sourcepath="C:/m2/repository/eu/ralph-schuster/data/1.2.5/data-1.2.5-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
