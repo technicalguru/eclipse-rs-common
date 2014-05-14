@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Common
 Bundle-SymbolicName: rs.rcpplugins.common.baselib
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.2.5.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-BuddyPolicy: registered
 Bundle-ClassPath: .,
@@ -13,6 +13,7 @@ Bundle-ClassPath: .,
  lib/commons-collections.jar,
  lib/commons-logging.jar,
  lib/persistence-api.jar,
+ lib/commons-io.jar,
  lib/commons-cli.jar,
  resources/,
  lib/baselib.jar
@@ -49,8 +50,15 @@ Export-Package: org.apache.commons.beanutils,
  org.apache.commons.configuration.tree,
  org.apache.commons.configuration.tree.xpath,
  org.apache.commons.configuration.web,
+ org.apache.commons.io,
+ org.apache.commons.io.comparator,
+ org.apache.commons.io.filefilter,
+ org.apache.commons.io.input,
+ org.apache.commons.io.monitor,
+ org.apache.commons.io.output,
  org.apache.commons.lang,
  org.apache.commons.lang.builder,
+ org.apache.commons.lang.enum,
  org.apache.commons.lang.enums,
  org.apache.commons.lang.exception,
  org.apache.commons.lang.math,
@@ -64,6 +72,7 @@ Export-Package: org.apache.commons.beanutils,
  rs.baselib.io,
  rs.baselib.lang,
  rs.baselib.licensing,
+ rs.baselib.licensing.internal,
  rs.baselib.prefs,
  rs.baselib.security,
  rs.baselib.sql,

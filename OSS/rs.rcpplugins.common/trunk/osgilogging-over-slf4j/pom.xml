@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>eu.ralph-schuster</groupId>
 		<artifactId>rs.rcpplugins.common</artifactId>
-		<version>1.2.2-SNAPSHOT</version>
+		<version>1.2.5-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>rs.rcpplugins.common.osgilogging-over-slf4j</artifactId>
