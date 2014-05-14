@@ -14,7 +14,7 @@
 	<artifactId>rs.rcpplugins.common</artifactId>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
-	<version>1.2.5-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<description>RCP Common Feature</description>
 
 	<scm>
@@ -26,6 +26,7 @@
 	<modules>
 		<module>jcl-over-slf4j</module>
 		<module>baselib</module>
+		<module>csv</module>
 		<module>data</module>
 		<module>data-hibernate</module>
 		<module>e4</module>

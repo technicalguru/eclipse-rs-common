@@ -4,10 +4,11 @@
 	<parent>
 		<groupId>eu.ralph-schuster</groupId>
 		<artifactId>rs.rcpplugins.common</artifactId>
-		<version>1.2.5-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>rs.rcpplugins.common.osgilogging-over-slf4j</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 	<name>${project.artifactId}</name>
 	<description>OSGI Logging via SLF4J</description>
