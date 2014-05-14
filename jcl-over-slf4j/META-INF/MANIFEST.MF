@@ -4,7 +4,7 @@ Created-By: Apache Maven
 Built-By: ceki
 Build-Jdk: 1.6.0_23
 Bundle-Description: JCL 1.1.1 implemented over SLF4J
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.0.0.qualifier
 Implementation-Version: 1.7.2
 Implementation-Title: jcl-over-slf4j
 Bundle-ManifestVersion: 2

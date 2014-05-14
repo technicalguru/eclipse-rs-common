@@ -90,4 +90,4 @@ Require-Bundle: org.junit;bundle-version="4.8.2",
  org.eclipse.jface;bundle-version="3.8.101",
  org.eclipse.jface.text;bundle-version="3.8.1",
  org.slf4j.api;bundle-version="1.7.2",
- rs.rcpplugins.common.jcl-over-slf4j;bundle-version="1.2.2"
+ rs.rcpplugins.common.jcl-over-slf4j
