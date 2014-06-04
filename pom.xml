@@ -18,9 +18,9 @@
 	<description>RCP Common Feature</description>
 
 	<scm>
-		<connection>scm:svn:https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.common/trunk</connection>
-		<developerConnection>scm:svn:https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.common/trunk</developerConnection>
-		<url>https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.common/trunk</url>
+		<connection>scm:svn:https://svn.ralph-schuster.eu/svn/OSS/rs.rcpplugins.common/trunk</connection>
+		<developerConnection>scm:svn:https://svn.ralph-schuster.eu/svn/OSS/rs.rcpplugins.common/trunk</developerConnection>
+		<url>https://svn.ralph-schuster.eu/svn/OSS/rs.rcpplugins.common/trunk</url>
 	</scm>
 
 	<modules>
