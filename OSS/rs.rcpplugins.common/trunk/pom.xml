@@ -4,11 +4,12 @@
 	<parent>
 		<groupId>eu.ralph-schuster</groupId>
 		<artifactId>rs.rcpplugins.tycho-parent</artifactId>
-		<version>1.0.1</version>
+		<version>1.1.0</version>
 	</parent>
 
 	<properties>
-		<rslib.version>1.2.5</rslib.version>
+		<rslib.version>1.2.8</rslib.version>
+		<rslib-plugin.version>1.2.8</rslib-plugin.version>
 	</properties>
 	
 	<artifactId>rs.rcpplugins.common</artifactId>

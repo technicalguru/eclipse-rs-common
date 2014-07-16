@@ -10,7 +10,7 @@
 
 	<artifactId>rs.rcpplugins.common.baselib</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<version>1.2.5-SNAPSHOT</version>
+	<version>${rslib-plugin.version}-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<description>General classes, interfaces and utilities</description>
 
