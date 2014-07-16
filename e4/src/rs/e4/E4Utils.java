@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.internal.services.BundleTranslationProvider;
 import org.eclipse.e4.core.services.translation.TranslationService;
 import org.eclipse.e4.ui.internal.workbench.E4Workbench;
 import org.eclipse.e4.ui.model.application.commands.MHandler;
@@ -29,10 +30,10 @@ import org.osgi.framework.FrameworkUtil;
  */
 public class E4Utils {
 
-	public static final TranslationService TRANSLATIONS = getTopContext().get(TranslationService.class);
+	private static TranslationService TRANSLATIONS = getTopContext().get(TranslationService.class);
 
 	private static String NL_VARIANTS[] = null;
-	
+
 	/**
 	 * Finds the top Eclipse context.
 	 * @return the eclipse context.
@@ -41,7 +42,7 @@ public class E4Utils {
 		return E4Workbench.getServiceContext();
 
 	}
-	
+
 	/**
 	 * Finds the top Eclipse context.
 	 * @return the eclipse context.
@@ -52,7 +53,7 @@ public class E4Utils {
 
 		return EclipseContextFactory.getServiceContext(bundleContext);
 	}
-	
+
 	/**
 	 * Finds an Eclipse context for the given class that fits the given type.
 	 * The type is not always ensured as at least the top-most context will be returned.
@@ -63,7 +64,7 @@ public class E4Utils {
 	public static IEclipseContext findContext(Class<?> clazz, Class<? extends IEclipseContext> type) {
 		Bundle bundle = FrameworkUtil.getBundle(clazz);
 		BundleContext bundleContext = bundle.getBundleContext();
-		
+
 		IEclipseContext ctx = EclipseContextFactory.getServiceContext(bundleContext);
 		while ((ctx != null) && (ctx.getParent() != null)) {
 			if ((type != null) && type.isInstance(ctx)) break;
@@ -71,7 +72,18 @@ public class E4Utils {
 		}
 		return ctx;
 	}
-	
+
+	public static TranslationService getTranslationService() {
+		if (TRANSLATIONS == null) {
+			TRANSLATIONS = getTopContext().get(TranslationService.class);
+			if (TRANSLATIONS == null) {
+				TRANSLATIONS = new BundleTranslationProvider();
+				getTopContext().set(TranslationService.class, TRANSLATIONS);
+			}
+		}
+		return TRANSLATIONS;
+	}
+
 	/**
 	 * Translate the given key.
 	 * @param key key to translate
@@ -80,9 +92,13 @@ public class E4Utils {
 	public static String translate(String key, String contributorUri, Object... args) {
 		if ((key == null) || (key.length() == 0)) return "";
 		if (key.charAt(0) != '%') key = '%'+key;
-		String rc = TRANSLATIONS.translate(key, contributorUri);
-		if ((args == null) || (args.length == 0)) return rc;
-		return MessageFormat.format(rc, args);
+		TranslationService service = getTranslationService();
+		if (service != null) {
+			String rc = service.translate(key, contributorUri);
+			if ((args == null) || (args.length == 0)) return rc;
+			return MessageFormat.format(rc, args);
+		}
+		return key;
 	}
 
 	/**
@@ -97,7 +113,7 @@ public class E4Utils {
 	public static URL find(Bundle bundle, String path, Map<String,String> override) {
 		return find(bundle, path, "default", override);
 	}
-	
+
 	/**
 	 * Enhances the {@link FileLocator#find(Bundle, org.eclipse.core.runtime.IPath, Map)} method
 	 * by allowing a specified default $nl$ location.
@@ -118,7 +134,7 @@ public class E4Utils {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Returns path locale variants.
 	 * @param s the path definition (containing $nl$ as placeholder)
@@ -139,7 +155,7 @@ public class E4Utils {
 		}
 		return new String[] { s };
 	}
-	
+
 	/**
 	 * Returns the Locale variants in order of priority.
 	 * @return the variants
@@ -163,7 +179,7 @@ public class E4Utils {
 		}
 		return NL_VARIANTS;
 	}
-	
+
 	/**
 	 * Returns the handler object for the given command in the part. 
 	 * @param part the part to check
@@ -180,5 +196,5 @@ public class E4Utils {
 		}
 		return null;
 	}
-	
+
 }
