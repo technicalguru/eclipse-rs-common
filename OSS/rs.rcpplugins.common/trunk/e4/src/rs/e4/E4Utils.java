@@ -12,6 +12,7 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.internal.services.BundleTranslationProvider;
@@ -77,7 +78,7 @@ public class E4Utils {
 		if (TRANSLATIONS == null) {
 			TRANSLATIONS = getTopContext().get(TranslationService.class);
 			if (TRANSLATIONS == null) {
-				TRANSLATIONS = new BundleTranslationProvider();
+				TRANSLATIONS = ContextInjectionFactory.make(BundleTranslationProvider.class, getTopContext());
 				getTopContext().set(TranslationService.class, TRANSLATIONS);
 			}
 		}
