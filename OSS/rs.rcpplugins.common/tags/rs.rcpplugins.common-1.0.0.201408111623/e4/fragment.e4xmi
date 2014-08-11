@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_AMWkAExkEeONAewWbkf-VQ">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_H_ESYExkEeONAewWbkf-VQ" featurename="commands" parentElementId="rs.rcpplugins.rsbudget.application">
+    <elements xsi:type="commands:Command" xmi:id="_S7p7wExkEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.command.help" commandName="Help Overview"/>
+    <elements xsi:type="commands:Command" xmi:id="_WMFxwExkEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.command.helpcontext" commandName="Context Help"/>
+    <elements xsi:type="commands:Command" xmi:id="_bjmzkExlEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.command.help.back" commandName="Help Back"/>
+    <elements xsi:type="commands:Command" xmi:id="_hQ_0MExlEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.command.help.forward" commandName="Help Forward"/>
+    <elements xsi:type="commands:Command" xmi:id="_l-alkExlEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.command.help.refresh" commandName="Help Refresh"/>
+    <elements xsi:type="commands:Command" xmi:id="_oG_boExlEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.command.help.stop" commandName="Help Stop"/>
+    <elements xsi:type="commands:Command" xmi:id="_CY0A8FBIEeO8pIb7r2tW5g" elementId="rs.rcpplugins.common.e4.command.help.collapseall" commandName="Help Collapse All"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_sBYisExnEeONAewWbkf-VQ" featurename="handlers" parentElementId="rs.rcpplugins.rsbudget.application" positionInList="first">
+    <elements xsi:type="commands:Handler" xmi:id="_gYxoMExkEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.handler.helpcontext" contributionURI="bundleclass://rs.rcpplugins.common.e4/rs.e4.help.ContextHelpHandler" command="_WMFxwExkEeONAewWbkf-VQ"/>
+    <elements xsi:type="commands:Handler" xmi:id="_a8MDsExkEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.handler.helpoverview" contributionURI="bundleclass://rs.rcpplugins.common.e4/rs.e4.help.HelpHandler" command="_S7p7wExkEeONAewWbkf-VQ"/>
+    <elements xsi:type="commands:Handler" xmi:id="_iuMLYFWvEeOfV8drm885gw" elementId="rs.rcpplugins.common.e4.handler.help.refresh" contributionURI="bundleclass://rs.rcpplugins.common.e4/rs.e4.help.HelpRefreshHandler" command="_l-alkExlEeONAewWbkf-VQ"/>
+    <elements xsi:type="commands:Handler" xmi:id="_l-gFkFWvEeOfV8drm885gw" elementId="rs.rcpplugins.common.e4.handler.help.stop" contributionURI="bundleclass://rs.rcpplugins.common.e4/rs.e4.help.HelpStopHandler" command="_oG_boExlEeONAewWbkf-VQ"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_5w4_oExnEeONAewWbkf-VQ" featurename="children" parentElementId="org.eclipse.ui.help" positionInList="first">
+    <elements xsi:type="menu:HandledMenuItem" xmi:id="_1WiJoExmEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.menuitem.helpoverview" label="%e4xmi.menu.help.help" iconURI="" command="_S7p7wExkEeONAewWbkf-VQ"/>
+    <elements xsi:type="menu:HandledMenuItem" xmi:id="_Cms_MExnEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.menuitem.helpcontext" label="%e4xmi.menu.help.contexthelp" iconURI="platform:/plugin/rs.rcpplugins.common.e4/resources/icons/help/help.gif" command="_WMFxwExkEeONAewWbkf-VQ"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_DjMnMExoEeONAewWbkf-VQ" featurename="bindings" parentElementId="rs.rcpplugins.rsbudget.bindingtable.windows">
+    <elements xsi:type="commands:KeyBinding" xmi:id="_UMGIkExnEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.keybinding.helpoverview" keySequence="M1+F1" command="_S7p7wExkEeONAewWbkf-VQ">
+      <tags>type:user</tags>
+    </elements>
+    <elements xsi:type="commands:KeyBinding" xmi:id="_g4Dd0ExnEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.keybinding.helpcontext" keySequence="F1" command="_WMFxwExkEeONAewWbkf-VQ">
+      <tags>type:user</tags>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_MrbXAExoEeONAewWbkf-VQ" featurename="children" parentElementId="rs.rcpplugins.rsbudget.partsashcontainer.main">
+    <elements xsi:type="basic:PartStack" xmi:id="_opFRgExkEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.partstack.help" visible="false" containerData="40" selectedElement="_uYRB4ExkEeONAewWbkf-VQ">
+      <children xsi:type="basic:Part" xmi:id="_uYRB4ExkEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.part.help" containerData="" contributionURI="bundleclass://rs.rcpplugins.common.e4/rs.e4.help.HelpPart" label="%e4xmi.part.help.title" iconURI="platform:/plugin/rs.rcpplugins.common.e4/resources/icons/help/help_view.gif" closeable="true">
+        <handlers xmi:id="_OgN24E-0EeO5kIjf3rUy_w" elementId="rs.rcpplugins.common.e4.handler.help.forwardhandler" contributionURI="bundleclass://rs.rcpplugins.common.e4/rs.e4.help.HelpForwardHandler" command="_hQ_0MExlEeONAewWbkf-VQ"/>
+        <handlers xmi:id="_pvlyQE-0EeO5kIjf3rUy_w" elementId="rs.rcpplugins.common.e4.handler.help.backhandler" contributionURI="bundleclass://rs.rcpplugins.common.e4/rs.e4.help.HelpBackHandler" command="_bjmzkExlEeONAewWbkf-VQ"/>
+        <handlers xmi:id="_HlUiEFBIEeO8pIb7r2tW5g" elementId="rs.rcpplugins.common.e4.handler.help.collapseall" contributionURI="bundleclass://rs.rcpplugins.common.e4/rs.e4.help.HelpCollapseAllHandler" command="_CY0A8FBIEeO8pIb7r2tW5g"/>
+        <toolbar xmi:id="_xztOAExkEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.toolbar.help">
+          <children xsi:type="menu:HandledToolItem" xmi:id="_USOSgFBIEeO8pIb7r2tW5g" elementId="rs.rcpplugins.common.e4.handledtoolitem.help.collapseall" label="%helpbrowser.label.collapseall" iconURI="platform:/plugin/rs.rcpplugins.common.e4/resources/icons/help/collapseall.gif" command="_CY0A8FBIEeO8pIb7r2tW5g"/>
+          <children xsi:type="menu:ToolBarSeparator" xmi:id="_TGDaUFBIEeO8pIb7r2tW5g" elementId="rs.rcpplugins.common.e4.toolbarseparator.1"/>
+          <children xsi:type="menu:HandledToolItem" xmi:id="_vqXtgExlEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.handledtoolitem.help.back" label="%helpbrowser.label.back" iconURI="platform:/plugin/rs.rcpplugins.common.e4/resources/icons/arrow-180-32.png" tooltip="%helpbrowser.label.back" command="_bjmzkExlEeONAewWbkf-VQ"/>
+          <children xsi:type="menu:HandledToolItem" xmi:id="_8AqUwExlEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.handledtoolitem.help.forward" label="%helpbrowser.label.forward" iconURI="platform:/plugin/rs.rcpplugins.common.e4/resources/icons/arrow-32.png" tooltip="%helpbrowser.label.forward" command="_hQ_0MExlEeONAewWbkf-VQ"/>
+          <children xsi:type="menu:ToolBarSeparator" xmi:id="_DdpDsExmEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.toolbarseparator.0"/>
+          <children xsi:type="menu:HandledToolItem" xmi:id="_RPSOoExmEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.handledtoolitem.refresh" label="%helpbrowser.label.refresh" iconURI="platform:/plugin/rs.rcpplugins.common.e4/resources/icons/refresh.png" tooltip="%helpbrowser.label.refresh" command="_l-alkExlEeONAewWbkf-VQ"/>
+          <children xsi:type="menu:HandledToolItem" xmi:id="_VonmYExmEeONAewWbkf-VQ" elementId="rs.rcpplugins.common.e4.handledtoolitem.stop" label="%helpbrowser.label.stop" iconURI="platform:/plugin/rs.rcpplugins.common.e4/resources/icons/cross-circle.png" tooltip="%helpbrowser.label.stop" command="_oG_boExlEeONAewWbkf-VQ"/>
+        </toolbar>
+      </children>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>

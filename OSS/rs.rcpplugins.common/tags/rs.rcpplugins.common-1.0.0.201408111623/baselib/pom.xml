@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>eu.ralph-schuster</groupId>
+		<artifactId>rs.rcpplugins.common</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>rs.rcpplugins.common.baselib</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<version>1.2.8-SNAPSHOT</version>
+	<name>${project.artifactId}</name>
+	<description>General classes, interfaces and utilities</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>eu.ralph-schuster</groupId>
+			<artifactId>baselib</artifactId>
+			<version>${rslib.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+
+				<executions>
+					<execution>
+						<id>copy-sources</id>
+						<phase>generate-sources</phase>
+
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/lib/sources</outputDirectory>
+							<excludeTransitive>false</excludeTransitive>
+							<classifier>sources</classifier>
+							<addParentPoms>false</addParentPoms>
+							<excludeScope>system</excludeScope>
+							<includeScope>runtime</includeScope>
+							<stripVersion>true</stripVersion>
+							<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>generate-sources</phase>
+
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/lib</outputDirectory>
+							<excludeTransitive>false</excludeTransitive>
+							<addParentPoms>false</addParentPoms>
+							<excludeScope>system</excludeScope>
+							<includeScope>runtime</includeScope>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

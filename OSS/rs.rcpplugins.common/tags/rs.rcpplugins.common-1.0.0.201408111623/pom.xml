@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>eu.ralph-schuster</groupId>
+		<artifactId>rs.rcpplugins.tycho-parent</artifactId>
+		<version>1.1.1</version>
+	</parent>
+
+	<properties>
+		<rslib.version>1.2.8</rslib.version>
+		<rslib-plugin.version>1.2.8</rslib-plugin.version>
+	</properties>
+	
+	<artifactId>rs.rcpplugins.common</artifactId>
+	<packaging>pom</packaging>
+	<name>${project.artifactId}</name>
+	<version>1.0.0-SNAPSHOT</version>
+	<description>RCP Common Feature</description>
+
+	<scm>
+		<connection>scm:svn:https://svn.ralph-schuster.eu/svn/OSS/rs.rcpplugins.common/trunk</connection>
+		<developerConnection>scm:svn:https://svn.ralph-schuster.eu/svn/OSS/rs.rcpplugins.common/trunk</developerConnection>
+		<url>https://svn.ralph-schuster.eu/svn/OSS/rs.rcpplugins.common/trunk</url>
+	</scm>
+
+	<modules>
+		<module>jcl-over-slf4j</module>
+		<module>baselib</module>
+		<module>csv</module>
+		<module>data</module>
+		<module>data-hibernate</module>
+		<module>e4</module>
+		<module>osgilogging-over-slf4j</module>
+		<module>feature</module>
+	</modules>
+
+</project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="rs.rcpplugins.common.e4.help" name="Help System" schema="schema/rs.rcpplugins.common.e4.help.exsd"/>
+   <extension-point id="rs.rcpplugins.common.e4.help.css" name="CSS for Help Pages" schema="schema/rs.rcpplugins.common.e4.help.css.exsd"/>
+   <extension
+         id="id2"
+         point="org.eclipse.e4.workbench.model">
+      <fragment
+            uri="fragment.e4xmi">
+      </fragment>
+      <processor
+            beforefragment="false"
+            class="rs.e4.ToolbarProcessor">
+      </processor>
+   </extension>
+
+</plugin>

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OSGI Logging over SLF4J
+Bundle-SymbolicName: rs.rcpplugins.common.osgilogging-over-slf4j;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.osgi.services,
+ org.eclipse.osgi,
+ org.slf4j.api
+Service-Component: OSGI-INF/logreaderservice.xml
+Bundle-ActivationPolicy: lazy
+ 
