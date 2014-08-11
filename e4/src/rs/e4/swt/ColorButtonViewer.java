@@ -146,12 +146,6 @@ public class ColorButtonViewer {
         e.gc.setAlpha(255);
         e.gc.fillRoundRectangle(MARGIN, MARGIN, size.x-MARGIN*2, size.y-MARGIN*2, ARC_SIZE, ARC_SIZE);
         c1.dispose();
-        
-        /*
-        c1 = new Color(e.display, 205,205,205);
-        e.gc.setForeground(c1);
-        e.gc.drawRoundRectangle(MARGIN-1, MARGIN-1, size.x-MARGIN*2+2, size.y-MARGIN*2+2, ARC_SIZE, ARC_SIZE);
-        c1.dispose();
-        */
+
 	}
 }
