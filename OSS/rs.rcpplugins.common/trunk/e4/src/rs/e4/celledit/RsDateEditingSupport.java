@@ -28,7 +28,7 @@ public class RsDateEditingSupport extends DateEditingSupport {
 	 */
 	@Override
 	protected void setValue(Object element, Object value) {
-		if (value.equals("") && isAllowNull()) value = null;
+		if ((value != null) && value.equals("") && isAllowNull()) value = null;
 		if (value != null) {
 			value = new RsDate((Date)value);
 		}
