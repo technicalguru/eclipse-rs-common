@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Hibernate
 Bundle-SymbolicName: rs.rcpplugins.common.data-hibernate
 Bundle-Version: 1.2.9.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-9
 Eclipse-BuddyPolicy: registered
 Eclipse-RegisterBuddy: rs.rcpplugins.common,rs.rcpplugins.data
 Require-Bundle: rs.rcpplugins.common.baselib,

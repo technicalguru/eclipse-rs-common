@@ -18,7 +18,7 @@ import org.eclipse.core.databinding.observable.list.IListChangeListener;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.property.Properties;
 
-import rs.baselib.lang.LangUtils;
+import rs.baselib.lang.ReflectionUtils;
 import rs.data.api.bo.IGeneralBO;
 import rs.data.api.dao.IGeneralDAO;
 import rs.data.event.DaoEvent;
@@ -29,7 +29,7 @@ import rs.data.event.IDaoListener;
  * @author ralph
  *
  */
-public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableList {
+public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableList<T> {
 
 	private Class<T> typeClass;
 	/** The DAO we listen for */
@@ -37,7 +37,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	/** Sorting the result */
 	private Comparator<T> sorter;
 	/** The list being observed */
-	private IObservableList observedList;
+	private IObservableList<T > observedList;
 	/** Listener for DAOs. */
 	private IDaoListener listener = new IDaoListener() {
 		
@@ -53,7 +53,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 */
 	@SuppressWarnings("unchecked")
 	public ObservableDaoList(IGeneralDAO<?, T> dao) {
-		typeClass = (Class<T>)LangUtils.getTypeArguments(ObservableDaoList.class, getClass()).get(0);
+		typeClass = (Class<T>)ReflectionUtils.getTypeArguments(ObservableDaoList.class, getClass()).get(0);
 		setDao(dao);
 	}
 
@@ -68,14 +68,15 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	/**
 	 * Creates the list to be observed.
 	 */
-	protected List<?> createList() {
+	@SuppressWarnings("unchecked")
+	protected List<Object> createList() {
 		IGeneralDAO<?, T> dao = getDao();
 		dao.getFactory().begin();
 		List<T> rc = dao.findDefaultAll();
 		dao.getFactory().commit();
 		
 		if (getSorter() != null) Collections.sort(rc, getSorter());
-		return rc;
+		return (List<Object>)rc;
 	}
 
 	/**
@@ -90,27 +91,29 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * Sets the dao.
 	 * @param dao the dao to set
 	 */
+	@SuppressWarnings("unchecked")
 	protected void setDao(IGeneralDAO<?, T> dao) {
 		this.dao = dao;
 		this.dao.addDaoListener(listener);
-		this.observedList = Properties.selfList(getTypeClass()).observe(createList());
+		this.observedList = (IObservableList<T>)Properties.selfList(getTypeClass()).observe(createList());
 	}
 
 	/**
 	 * Handles the DAO event.
 	 * @param event
 	 */
+	@SuppressWarnings("unchecked")
 	protected void handleDaoEvent(DaoEvent event) {
 		switch (event.getType()) {
 		case OBJECT_CREATED:
-			add(event.getObject());
+			add((T)event.getObject());
 			break;
 		case OBJECT_UPDATED:
 			int idx = indexOf(event.getObject());
-			if (idx >= 0) set(idx, event.getObject());
+			if (idx >= 0) set(idx, (T)event.getObject());
 			break;
 		case OBJECT_DELETED:
-			remove(event.getObject());
+			remove((T)event.getObject());
 			break;
 		case ALL_DEFAULT_DELETED:
 			removeDefaultAll();
@@ -165,7 +168,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @param listener
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#addListChangeListener(org.eclipse.core.databinding.observable.list.IListChangeListener)
 	 */
-	public void addListChangeListener(IListChangeListener listener) {
+	public void addListChangeListener(IListChangeListener<? super T> listener) {
 		observedList.addListChangeListener(listener);
 	}
 
@@ -173,7 +176,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @param listener
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#removeListChangeListener(org.eclipse.core.databinding.observable.list.IListChangeListener)
 	 */
-	public void removeListChangeListener(IListChangeListener listener) {
+	public void removeListChangeListener(IListChangeListener<? super T> listener) {
 		observedList.removeListChangeListener(listener);
 	}
 
@@ -214,8 +217,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#iterator()
 	 */
-	@SuppressWarnings("rawtypes")
-	public Iterator iterator() {
+	public Iterator<T> iterator() {
 		return observedList.iterator();
 	}
 
@@ -232,7 +234,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#toArray(java.lang.Object[])
 	 */
-	public Object[] toArray(Object[] a) {
+	public <E> E[] toArray(E[] a) {
 		return observedList.toArray(a);
 	}
 
@@ -241,7 +243,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#add(java.lang.Object)
 	 */
-	public boolean add(Object o) {
+	public boolean add(T o) {
 		return observedList.add(o);
 	}
 
@@ -259,8 +261,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#containsAll(java.util.Collection)
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean containsAll(Collection c) {
+	public boolean containsAll(Collection<?> c) {
 		return observedList.containsAll(c);
 	}
 
@@ -277,8 +278,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#addAll(java.util.Collection)
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean addAll(Collection c) {
+	public boolean addAll(Collection<? extends T> c) {
 		return observedList.addAll(c);
 	}
 
@@ -288,8 +288,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#addAll(int, java.util.Collection)
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean addAll(int index, Collection c) {
+	public boolean addAll(int index, Collection<? extends T> c) {
 		return observedList.addAll(index, c);
 	}
 
@@ -298,8 +297,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#removeAll(java.util.Collection)
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean removeAll(Collection c) {
+	public boolean removeAll(Collection<?> c) {
 		return observedList.removeAll(c);
 	}
 
@@ -308,8 +306,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#retainAll(java.util.Collection)
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean retainAll(Collection c) {
+	public boolean retainAll(Collection<?> c) {
 		return observedList.retainAll(c);
 	}
 
@@ -343,7 +340,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#get(int)
 	 */
-	public Object get(int index) {
+	public T get(int index) {
 		return observedList.get(index);
 	}
 
@@ -353,7 +350,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#set(int, java.lang.Object)
 	 */
-	public Object set(int index, Object element) {
+	public T set(int index, T element) {
 		return observedList.set(index, element);
 	}
 
@@ -371,7 +368,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#move(int, int)
 	 */
-	public Object move(int oldIndex, int newIndex) {
+	public T move(int oldIndex, int newIndex) {
 		return observedList.move(oldIndex, newIndex);
 	}
 
@@ -396,7 +393,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#remove(int)
 	 */
-	public Object remove(int index) {
+	public T remove(int index) {
 		return observedList.remove(index);
 	}
 
@@ -430,8 +427,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#listIterator()
 	 */
-	@SuppressWarnings("rawtypes")
-	public ListIterator listIterator() {
+	public ListIterator<T> listIterator() {
 		return observedList.listIterator();
 	}
 
@@ -440,8 +436,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#listIterator(int)
 	 */
-	@SuppressWarnings("rawtypes")
-	public ListIterator listIterator(int index) {
+	public ListIterator<T> listIterator(int index) {
 		return observedList.listIterator(index);
 	}
 
@@ -451,8 +446,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @return
 	 * @see org.eclipse.core.databinding.observable.list.IObservableList#subList(int, int)
 	 */
-	@SuppressWarnings("rawtypes")
-	public List subList(int fromIndex, int toIndex) {
+	public List<T> subList(int fromIndex, int toIndex) {
 		return observedList.subList(fromIndex, toIndex);
 	}
 
@@ -485,8 +479,7 @@ public class ObservableDaoList<T extends IGeneralBO<?>> implements IObservableLi
 	 * @param element
 	 * @see java.util.List#add(int, java.lang.Object)
 	 */
-	@SuppressWarnings("unchecked")
-	public void add(int index, Object element) {
+	public void add(int index, T element) {
 		observedList.add(index, element);
 	}
 
