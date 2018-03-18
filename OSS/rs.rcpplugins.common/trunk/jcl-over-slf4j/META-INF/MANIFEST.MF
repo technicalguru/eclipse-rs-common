@@ -11,7 +11,7 @@ Bundle-ManifestVersion: 2
 Bundle-SymbolicName: rs.rcpplugins.common.jcl-over-slf4j
 Bundle-Name: rs.rcpplugins.common.jcl-over-slf4j
 Bundle-Vendor: SLF4J.ORG
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-9
 Export-Package: org.apache.commons.logging;version=1.1.1,  org.apache.
  commons.logging.impl;version=1.1.1
 Import-Package: org.slf4j;version=1.7.2, org.slf4j.spi;version=1.7.2
