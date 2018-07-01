@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CSV/Excel Utility
 Bundle-SymbolicName: rs.rcpplugins.common.csv
-Bundle-Version: 2.7.1.qualifier
+Bundle-Version: 2.8.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-9
 Require-Bundle: rs.rcpplugins.common.baselib
 Bundle-ClassPath: lib/csv.jar,

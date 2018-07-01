@@ -76,10 +76,16 @@ public class E4Utils {
 
 	public static TranslationService getTranslationService() {
 		if (TRANSLATIONS == null) {
-			TRANSLATIONS = getTopContext().get(TranslationService.class);
+			IEclipseContext context = getTopContext();
+			TRANSLATIONS = context.get(TranslationService.class);
 			if (TRANSLATIONS == null) {
-				TRANSLATIONS = ContextInjectionFactory.make(BundleTranslationProvider.class, getTopContext());
-				getTopContext().set(TranslationService.class, TRANSLATIONS);
+				Object o = context.get(BundleTranslationProvider.LOCALE);
+				if ((o == null) || (o instanceof String)) {
+					Locale locale = Locale.getDefault();
+					context.set(BundleTranslationProvider.LOCALE, locale);
+				}
+				TRANSLATIONS = ContextInjectionFactory.make(BundleTranslationProvider.class, context);
+				context.set(TranslationService.class, TRANSLATIONS);
 			}
 		}
 		return TRANSLATIONS;
