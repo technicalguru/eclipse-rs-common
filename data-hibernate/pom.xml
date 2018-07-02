@@ -48,6 +48,9 @@
 							<includes>
 								<include>**/*.jar</include>
 							</includes>
+							<excludes>
+								<exclude>JDBC/*.jar</exclude>
+							</excludes>
 							<followSymlinks>false</followSymlinks>
 						</fileset>
 					</filesets>
