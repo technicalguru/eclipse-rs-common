@@ -9,7 +9,7 @@
 
 	<properties>
 		<rslib.version>1.3.0</rslib.version>
-		<rslib-plugin.version>1.3.0-SNAPSHOT</rslib-plugin.version>
+		<rslib-plugin.version>1.3.0</rslib-plugin.version>
 	</properties>
 	
 	<artifactId>rs.rcpplugins.common</artifactId>
