@@ -26,7 +26,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-
+				<version>3.1.1</version>
 				<executions>
 					<execution>
 						<id>copy-sources</id>
@@ -44,6 +44,7 @@
 							<includeScope>runtime</includeScope>
 							<stripVersion>true</stripVersion>
 							<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+							<overWriteIfNewer>true</overWriteIfNewer>
 						</configuration>
 					</execution>
 					<execution>
