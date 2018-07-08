@@ -3,8 +3,9 @@
  */
 package rs.e4.celledit;
 
-import java.text.NumberFormat;
-import java.util.Locale;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.TableViewer;
@@ -17,10 +18,11 @@ import org.slf4j.LoggerFactory;
  * @author ralph
  *
  */
-public class FloatEditingSupport extends AbstractEditingSupport {
+public class BigDecimalEditingSupport extends AbstractEditingSupport {
 
-	private NumberFormat format = NumberFormat.getNumberInstance(Locale.getDefault());
-	private Logger log = LoggerFactory.getLogger(FloatEditingSupport.class);
+	private DecimalFormat format;
+	private Logger log = LoggerFactory.getLogger(BigDecimalEditingSupport.class);
+	private int scale;
 	
 	/**
 	 * Constructor.
@@ -28,9 +30,13 @@ public class FloatEditingSupport extends AbstractEditingSupport {
 	 * @param model
 	 * @param allowNull
 	 */
-	public FloatEditingSupport(TableViewer viewer, IEditingSupportModel model, boolean allowNull) {
+	public BigDecimalEditingSupport(TableViewer viewer, IEditingSupportModel model, boolean allowNull, int scale) {
 		super(viewer, model, allowNull);
-
+		format = new DecimalFormat();
+		format.setParseBigDecimal(true);
+		format.setMinimumFractionDigits(scale);
+		format.setMaximumFractionDigits(scale);
+		this.scale = scale;
 	}
 
 	/**
@@ -59,7 +65,7 @@ public class FloatEditingSupport extends AbstractEditingSupport {
 	@Override
 	protected Object format(Object value) {
 		if (value == null) return null;
-		return format.format(((Number)value).floatValue());
+		return format.format(((Number)value));
 	}
 
 	/**
@@ -71,7 +77,9 @@ public class FloatEditingSupport extends AbstractEditingSupport {
 			setPropertyValue(element, null);
 		} else {
 			try {
-				setPropertyValue(element, format.parse((String)value).floatValue());
+				BigDecimal bd = (BigDecimal)format.parse((String)value);
+				bd.setScale(scale, RoundingMode.HALF_UP);
+				setPropertyValue(element, bd);
 			} catch (Exception e) {
 				// Do nothing
 				log.error("Cannot parse "+value, e);
