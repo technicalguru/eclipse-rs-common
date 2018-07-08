@@ -3,8 +3,8 @@
  */
 package rs.e4.jface.databinding;
 
-import java.text.NumberFormat;
-import java.util.Locale;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 import org.eclipse.core.databinding.conversion.IConverter;
 
@@ -12,34 +12,36 @@ import rs.baselib.lang.LangUtils;
 import rs.baselib.util.CommonUtils;
 
 /**
- * Converts strings to integers.
+ * Converts strings to big decimals.
  * @author ralph
  *
  */
-public class StringToFloatConverter implements IConverter {
+public class StringToBigDecimalConverter implements IConverter {
 
-	private float nullValue = 0;
-	private NumberFormat format = NumberFormat.getNumberInstance(Locale.getDefault());
+	private BigDecimal nullValue = BigDecimal.ZERO;
+	private DecimalFormat format;
 	
 	/**
 	 * Constructor.
 	 */
-	public StringToFloatConverter() {
-		this(-1);
+	public StringToBigDecimalConverter() {
+		this(BigDecimal.ZERO);
 	}
 
 	/**
 	 * Constructor.
 	 */
-	public StringToFloatConverter(float nullValue) {
+	public StringToBigDecimalConverter(BigDecimal nullValue) {
 		setNullValue(nullValue);
+		format = new DecimalFormat();
+		format.setParseBigDecimal(true);
 	}
 
 	/**
 	 * Returns the {@link #nullValue}.
 	 * @return the nullValue
 	 */
-	public float getNullValue() {
+	public BigDecimal getNullValue() {
 		return nullValue;
 	}
 
@@ -47,7 +49,7 @@ public class StringToFloatConverter implements IConverter {
 	 * Sets the {@link #nullValue}.
 	 * @param nullValue the nullValue to set
 	 */
-	public void setNullValue(float nullValue) {
+	public void setNullValue(BigDecimal nullValue) {
 		this.nullValue = nullValue;
 	}
 
@@ -77,7 +79,7 @@ public class StringToFloatConverter implements IConverter {
 	 */
 	@Override
 	public Object getToType() {
-		return Float.TYPE;
+		return BigDecimal.class;
 	}
 
 	
