@@ -19,6 +19,11 @@
 			<artifactId>data</artifactId>
 			<version>${rslib.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.hbci4j</groupId>
+			<artifactId>hbci4j-core</artifactId>
+			<version>3.0.15</version>
+		</dependency>
 	</dependencies>
 		
 	<build>
