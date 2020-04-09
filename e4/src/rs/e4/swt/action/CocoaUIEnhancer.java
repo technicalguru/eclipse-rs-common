@@ -55,7 +55,8 @@ public class CocoaUIEnhancer {
 	 * @param appName
 	 *            The name of the application. It will be used to customize the About and Quit menu
 	 *            items. If you do not wish to customize the About and Quit menu items, just pass
-	 *            <tt>null</tt> here.
+	 *            {@code null}
+	 *  here.
 	 */
 	public CocoaUIEnhancer( String appName ) {
 	}

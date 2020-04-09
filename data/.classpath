@@ -5,7 +5,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/howl.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-core.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/ow2-jta-1.1-spec.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/data.jar" sourcepath="C:/m2/repository/eu/ralph-schuster/data/1.2.5/data-1.2.5-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/data.jar" sourcepath="/home/ralph/.m2/repository/eu/ralph-schuster/data/1.4.0/data-1.4.0-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/i18n.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/log-api.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/log4j.jar"/>
