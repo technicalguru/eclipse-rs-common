@@ -3,7 +3,7 @@
  */
 package rs.e4.jface.databinding;
 
-import org.apache.commons.collections.Predicate;
+import org.apache.commons.collections4.Predicate;
 import org.eclipse.core.databinding.conversion.IConverter;
 
 import rs.baselib.lang.LangUtils;

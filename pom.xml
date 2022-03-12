@@ -4,18 +4,18 @@
 	<parent>
 		<groupId>eu.ralph-schuster</groupId>
 		<artifactId>rs.rcpplugins.tycho-parent</artifactId>
-		<version>1.4.1</version>
+		<version>1.6.2-SNAPSHOT</version>
 	</parent>
 
 	<properties>
-		<rslib.version>1.4.0</rslib.version>
-		<rslib-plugin.version>1.4.0</rslib-plugin.version>
+		<rslib.version>2.0.2</rslib.version>
+		<rslib-plugin.version>2.0.2</rslib-plugin.version>
 	</properties>
 	
 	<artifactId>rs.rcpplugins.common</artifactId>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
-	<version>1.2.0-SNAPSHOT</version>
+	<version>2.1.0-SNAPSHOT</version>
 	<description>RCP Common Feature</description>
 	<url>https://github.com/technicalguru/eclipse-rs-common</url>
 

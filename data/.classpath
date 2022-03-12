@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-9"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry exported="true" kind="lib" path="lib/howl.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jotm-core.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/ow2-jta-1.1-spec.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/data.jar" sourcepath="/home/ralph/.m2/repository/eu/ralph-schuster/data/1.4.0/data-1.4.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/data.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/i18n.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/log-api.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/log4j.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-validator.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-cli.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-digester.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hbci4j-adorsys.jar" sourcepath="lib/sources/hbci4j-adorsys-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hbci4j-adorsys.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

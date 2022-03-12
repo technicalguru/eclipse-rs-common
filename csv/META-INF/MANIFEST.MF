@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CSV/Excel Utility
 Bundle-SymbolicName: rs.rcpplugins.common.csv
-Bundle-Version: 3.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-9
+Bundle-Version: 2.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: rs.rcpplugins.common.baselib
 Bundle-ClassPath: lib/csv.jar,
  lib/poi-ooxml-schemas.jar,
@@ -178,3 +178,4 @@ Export-Package: com.microsoft.schemas.compatibility,
  org.w3.x2000.x09.xmldsig.impl,
  schemaorg_apache_xmlbeans.system.s8C3F193EE11A2F798ACF65489B9E6078,
  schemaorg_apache_xmlbeans.system.sD023D6490046BA0250A839A9AD24C443
+Automatic-Module-Name: rs.rcpplugins.common.csv

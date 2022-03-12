@@ -6,7 +6,7 @@ package rs.e4.jface.databinding;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import org.apache.commons.collections.Predicate;
+import org.apache.commons.collections4.Predicate;
 import org.eclipse.core.databinding.conversion.IConverter;
 
 import rs.baselib.lang.LangUtils;

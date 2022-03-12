@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Data
 Bundle-SymbolicName: rs.rcpplugins.common.data;singleton:=true
-Bundle-Version: 1.4.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-9
+Bundle-Version: 2.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Eclipse-BuddyPolicy: registered
 Eclipse-RegisterBuddy: rs.rcpplugins.common
 Require-Bundle: rs.rcpplugins.common.jcl-over-slf4j,
@@ -143,3 +143,4 @@ Export-Package: javax.transaction;uses:="javax.transaction.xa",
    rs.data.api,
    javax.transaction,
    rs.baselib.util"
+Automatic-Module-Name: rs.rcpplugins.common.data

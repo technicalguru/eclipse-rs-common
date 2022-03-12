@@ -11,9 +11,9 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.HierarchicalConfiguration;
-import org.apache.commons.configuration.XMLConfiguration;
+import org.apache.commons.configuration2.HierarchicalConfiguration;
+import org.apache.commons.configuration2.XMLConfiguration;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
@@ -27,6 +27,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.service.event.Event;
 import org.slf4j.LoggerFactory;
 
+import rs.baselib.configuration.ConfigurationUtils;
 import rs.baselib.lang.LangUtils;
 import rs.e4.E4Utils;
 import rs.e4.help.internal.HelpTopic;
@@ -112,7 +113,7 @@ public class HelpSystem {
 	 * @param url url of file to be added
 	 */
 	public void addToc(Bundle bundle, URL url, boolean primary) throws ConfigurationException {
-		XMLConfiguration cfg = new XMLConfiguration(url);
+		XMLConfiguration cfg = ConfigurationUtils.getXmlConfiguration(url);
 		addToc(loadToc(root, cfg, bundle, url), primary);
 	}
 
@@ -145,7 +146,7 @@ public class HelpSystem {
 	 * @return the TOC tree loaded
 	 * @throws ConfigurationException when a config problem occurred
 	 */
-	protected static Toc loadToc(Toc parent, HierarchicalConfiguration cfg, Bundle bundle, URL url) throws ConfigurationException {
+	protected static Toc loadToc(Toc parent, HierarchicalConfiguration<?> cfg, Bundle bundle, URL url) throws ConfigurationException {
 		Toc toc = parent.createChild();
 		toc.setUrl(bundle, url);
 		
@@ -188,7 +189,7 @@ public class HelpSystem {
 			HierarchicalConfiguration subConfig = cfg.configurationAt("link(0)", false);
 			if (subConfig != null) {
 				URL childURL = E4Utils.find(bundle, "$nl$/"+subConfig.getString("[@toc]"), null);
-				XMLConfiguration tocCfg = new XMLConfiguration(childURL);
+				XMLConfiguration tocCfg = ConfigurationUtils.getXmlConfiguration(childURL);
 				Toc toc = loadToc(parent, tocCfg, bundle, childURL);
 				if (label != null) {
 					toc.setLabel(label);
@@ -208,8 +209,8 @@ public class HelpSystem {
 		toc.setTopic(topic);
 		
 		// Load sub topics
-		for (HierarchicalConfiguration subConfig : cfg.configurationsAt("topic")) {
-			loadTopic(toc, subConfig, bundle, url);
+		for (Object subConfig : cfg.configurationsAt("topic")) {
+			loadTopic(toc, (HierarchicalConfiguration<?>)subConfig, bundle, url);
 		}
 		
 	}
